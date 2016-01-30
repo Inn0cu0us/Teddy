@@ -5,9 +5,13 @@ public class PlayerControls : MonoBehaviour {
 
 	Vector3 Movement;
 	bool IsPushing = false;
+    bool pushPressed = false;
+    bool pushReleased = false;
 	bool IsUsing = false;
 	private Rigidbody myBody;
 	private GameManager theManager;
+    private Rigidbody objectPushed;
+    Vector3 lastMovement;
 
 
 	public float Speed;
@@ -29,12 +33,19 @@ public class PlayerControls : MonoBehaviour {
 	{
 		ReadInput ();
 		myBody.velocity = Movement;
+        if(objectPushed != null)
+        {
+            objectPushed.velocity = Movement;
+        }
 
-		if (IsPushing) {
-			myBody.mass = 100f;
-		} else {
-			myBody.mass = 1f;
-		}
+		if (pushPressed)
+        {
+            TryPush();
+        }
+        else if (pushReleased)
+        {
+            objectPushed = null;
+        }
 
 		if (IsUsing) {
 			Debug.Log ("Pressed Use");
@@ -45,8 +56,8 @@ public class PlayerControls : MonoBehaviour {
 	void TryUse()
 	{
 		RaycastHit hitInfo;
-		Debug.DrawRay (this.gameObject.transform.position, transform.forward, Color.green, 1f);
-		if (Physics.Raycast(this.gameObject.transform.position, transform.forward, out hitInfo, 1f))
+        Debug.DrawRay(this.gameObject.transform.position, lastMovement.normalized, Color.red, 3f);
+        if (Physics.Raycast(this.gameObject.transform.position, lastMovement.normalized, out hitInfo, 3f))
 		{
 			Debug.Log ("Hit " + hitInfo.collider.gameObject);
 			Candle aCandle = hitInfo.collider.gameObject.GetComponent<Candle>();
@@ -57,12 +68,31 @@ public class PlayerControls : MonoBehaviour {
 		}
 	}
 
+    void TryPush()
+    {
+        RaycastHit hitInfo;
+        Debug.DrawRay(this.gameObject.transform.position, lastMovement.normalized, Color.red, 3f);
+        if (Physics.Raycast(this.gameObject.transform.position, lastMovement.normalized, out hitInfo, 3f))
+        {
+            Debug.Log("Hit " + hitInfo.collider.gameObject);
+            if(hitInfo.collider.gameObject.tag.Equals("Pushable")) 
+            {
+                objectPushed = hitInfo.collider.gameObject.GetComponent<Rigidbody>();  
+            }
+        }
+    }
+
 	void ReadInput()
 	{
 		float xMovement = Input.GetAxis("Horizontal") * Speed * Time.deltaTime;
 		float zMovement = Input.GetAxis ("Vertical") * Speed * Time.deltaTime;
 		Movement = new Vector3 (xMovement, 0f, zMovement);
-		IsPushing = Input.GetButton ("Push");
+        if(xMovement != 0 || zMovement != 0)
+        {
+            lastMovement = Movement;
+        }
+		pushPressed = Input.GetButtonDown ("Push");
+        pushReleased = Input.GetButtonUp("Push");
 		IsUsing = Input.GetButtonDown ("Use");
 	//	if (Input.GetButton (
 	}
