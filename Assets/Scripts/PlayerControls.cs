@@ -5,7 +5,7 @@ public class PlayerControls : MonoBehaviour {
 
 	Vector3 Movement;
 	bool IsPushing = false;
-	bool UseThing = false;
+	bool IsUsing = false;
 	private Rigidbody myBody;
 
 
@@ -32,6 +32,26 @@ public class PlayerControls : MonoBehaviour {
 		} else {
 			myBody.mass = 1f;
 		}
+
+		if (IsUsing) {
+			Debug.Log ("Pressed Use");
+			TryUse ();
+		}
+	}
+
+	void TryUse()
+	{
+		RaycastHit hitInfo;
+		Debug.DrawRay (this.gameObject.transform.position, transform.forward, Color.green, 1f);
+		if (Physics.Raycast(this.gameObject.transform.position, transform.forward, out hitInfo, 1f))
+		{
+			Debug.Log ("Hit " + hitInfo.collider.gameObject);
+			Candle aCandle = hitInfo.collider.gameObject.GetComponent<Candle>();
+			if (aCandle != null)
+			{
+				aCandle.PerformUseAction();
+			}
+		}
 	}
 
 	void ReadInput()
@@ -40,6 +60,8 @@ public class PlayerControls : MonoBehaviour {
 		float zMovement = Input.GetAxis ("Vertical") * Speed * Time.deltaTime;
 		Movement = new Vector3 (xMovement, 0f, zMovement);
 		IsPushing = Input.GetButton ("Push");
+		IsUsing = Input.GetButtonDown ("Use");
+	//	if (Input.GetButton (
 	}
 	 
 }
