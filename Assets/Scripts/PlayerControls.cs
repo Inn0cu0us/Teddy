@@ -36,12 +36,10 @@ public class PlayerControls : MonoBehaviour {
 
 	void ReadInput()
 	{
-		//ReadIi
 		float xMovement = Input.GetAxis("Horizontal") * Speed * Time.deltaTime;
 		float zMovement = Input.GetAxis ("Vertical") * Speed * Time.deltaTime;
 		Movement = new Vector3 (xMovement, 0f, zMovement);
 		IsPushing = Input.GetButton ("Push");
-		Debug.Log ("Movement vector: " + Movement);
 	}
 	 
 }
