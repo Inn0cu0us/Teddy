@@ -48,3 +48,10 @@ Temporary Items
 Library/AnnotationManager
 Library/assetDatabase3
 Library/AssetImportState
+Library/AssetServerCacheV3
+*.csproj
+Library/AssetVersioning.db
+*.prefs
+Library/metadata/00/00000000000000001000000000000000
+*.info
+Library/metadata/00/00000000000000002000000000000000
