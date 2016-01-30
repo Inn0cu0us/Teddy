@@ -5,6 +5,7 @@ public class PlayerControls : MonoBehaviour {
 
 	Vector3 Movement;
 	bool IsPushing = false;
+	bool UseThing = false;
 	private Rigidbody myBody;
 
 
@@ -27,7 +28,9 @@ public class PlayerControls : MonoBehaviour {
 		myBody.velocity = Movement;
 
 		if (IsPushing) {
-
+			myBody.mass = 100f;
+		} else {
+			myBody.mass = 1f;
 		}
 	}
 
