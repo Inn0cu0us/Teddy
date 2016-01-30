@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - GlobalLight
+  - Pushable
   layers:
   - Default
   - TransparentFX
