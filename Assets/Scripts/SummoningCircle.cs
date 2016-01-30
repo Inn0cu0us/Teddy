@@ -10,8 +10,14 @@ public class SummoningCircle : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		PlaceRunes ();
+		PlaceCastingZone ();
 	}
-	
+
+	void PlaceCastingZone()
+	{
+
+	}
+
 	// Update is called once per frame
 	void Update () {
 	
@@ -28,7 +34,7 @@ public class SummoningCircle : MonoBehaviour {
 			float theta = (i+1)*segAngle;
 			x = x + Mathf.Cos(theta);
 			z = z + Mathf.Sin (theta);
-			Vector3 runePoint = new Vector3 ( x*Radius, 0f, z*Radius);
+			Vector3 runePoint = new Vector3 ( x*Radius - Radius, 0f, z*Radius - Radius);
 
 
 			var newRune = GameObject.Instantiate(RunePrefab);

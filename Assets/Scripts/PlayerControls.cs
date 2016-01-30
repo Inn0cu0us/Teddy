@@ -7,12 +7,15 @@ public class PlayerControls : MonoBehaviour {
 	bool IsPushing = false;
 	bool IsUsing = false;
 	private Rigidbody myBody;
+	private GameManager theManager;
 
 
 	public float Speed;
 
 	void Awake (){
 		myBody = GetComponent<Rigidbody> ();
+		var go = GameObject.FindGameObjectWithTag ("GameController");
+		theManager = go.GetComponent<GameManager> ();
 	}
 
 	// Use this for initialization
@@ -62,6 +65,15 @@ public class PlayerControls : MonoBehaviour {
 		IsPushing = Input.GetButton ("Push");
 		IsUsing = Input.GetButtonDown ("Use");
 	//	if (Input.GetButton (
+	}
+
+	public void SubmitPuzzleSolution()
+	{
+		if (theManager.CheckPuzzle ()) {
+			//win
+		} else {
+			//you die
+		}
 	}
 	 
 }
