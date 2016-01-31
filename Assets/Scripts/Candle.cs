@@ -7,6 +7,7 @@ public class Candle : Usable {
     public float SecondsOfCandlelight;
 	public float SecondsBetweenFlicker;
 	public float FlickerRange;
+	public Imposter RevealedObject;
 
 	private float OriginalIntensity;
 	private Light Flame;
@@ -33,6 +34,7 @@ public class Candle : Usable {
 	void Update () {
         if (isLit)
         {
+			RevealedObject.RevealIdentity();
 			flickerTimer += Time.deltaTime;
 			if (flickerTimer >= SecondsBetweenFlicker)
 			{
@@ -66,6 +68,7 @@ public class Candle : Usable {
 	private void Extinguish()
 	{
 		//play candle off sshhhh
+		RevealedObject.ConcealIdentity ();
 		Debug.Log("Candle extinguished");
 		GlobalLight.color = GlobalLightStartingColor;
 		Flame.intensity = 0f;

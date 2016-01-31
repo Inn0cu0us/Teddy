@@ -8,7 +8,7 @@ public class LvLBuilder : MonoBehaviour {
 	public GameObject[] RitualPrefabs;
 	public List<GameObject> Spawnpoints;
 	public GameObject[] RitualObjects;
-
+	public Material[] ClutterMaterials;
 	private GameObject[] GameItems;// = new GameObject[];
 	private GameManager theManager;
 	private SummoningCircle theCircle;
@@ -31,6 +31,7 @@ public class LvLBuilder : MonoBehaviour {
 		Spawnpoints = new List<GameObject> (40);
 		PlaceObjects ();
 		InitManager ();
+		theManager.GeneratePuzzle ();
 	}
 
 	void InitManager()
@@ -58,6 +59,28 @@ public class LvLBuilder : MonoBehaviour {
 		// Place the ritual objects
 		for (int i=0; i<=RitualPrefabs.Length-1; i++) {
 			RitualObjects[i] = GameObject.Instantiate(RitualPrefabs[i]);
+			Imposter fake = RitualObjects[i].GetComponent<Imposter>();
+			if (fake != null)
+			{
+				//randomly select a clutter object
+				int clutterIndex = Random.Range(0, ClutterMaterials.Length);
+				GameObject aClutterObject = ClutterPrefabs[clutterIndex];
+
+				//?? doesn't work???
+				//MeshRenderer aDisguise = aClutterObject.GetComponentInChildren<MeshRenderer>();
+
+
+				// get its material
+				Material materialDisguise = ClutterMaterials[clutterIndex];
+				// set the imposter image to the material
+				fake.ImposterImage = materialDisguise;
+				MeshRenderer[] backAndFrontRenderer = RitualObjects[i].GetComponentsInChildren<MeshRenderer>();
+				foreach (MeshRenderer mr in backAndFrontRenderer)
+				{
+					fake.TrueImage = mr.material; //delete if not working
+					mr.material = fake.ImposterImage;
+				}
+			}
 			int SpawnSelect = Random.Range (0,Spawnpoints.Count - 1);
 			RitualObjects[i].transform.position = Spawnpoints[SpawnSelect].transform.position;
 			Spawnpoints.RemoveAt(SpawnSelect);
@@ -75,11 +98,6 @@ public class LvLBuilder : MonoBehaviour {
 
 		//remove spawnpoint from list
 			Spawnpoints.RemoveAt(SpawnSelect);
-
-		// Place the instance at the spawnpoint
-	    // Update the puzzle solution 
-		
-
 		}
 	}
 
