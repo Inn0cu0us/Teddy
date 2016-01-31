@@ -4,24 +4,24 @@ using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour {
 
-	private bool isVictory = false;
 
-	private int WinStreak = 0;
-	private Dictionary<GameObject, GameObject> PuzzleSolution;
 
 	public GameObject[] Runes;
 	public GameObject[] RitualObjects;
 	public int MoonPhase;
-
+	public float CloseEnough; //the ritual object must be at least this close to its rune position
 
 	public Candle RedCandle;
 	public Dictionary<int, PuzzleSolution> PuzzleSolutions;
 	public PuzzleSolution ActualSolution;
+	private bool isVictory = false;
+	
+	private int WinStreak = 0;
+	private Dictionary<GameObject, GameObject> PuzzleSolution;
+
 	void Start () 
 	{
-
-
-
+		
 	}
 
 	public void GeneratePuzzle()
@@ -84,16 +84,75 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public bool CheckPuzzle()
-	{
-		//called from player
-		//if wrong, you die!
-		return true;
-
+	{	
+		return (DistanceBetween (ActualSolution.BlackPair) <= CloseEnough && 
+			DistanceBetween (ActualSolution.RedPair) <= CloseEnough &&
+			DistanceBetween (ActualSolution.GreenPair) <= CloseEnough &&
+			NoBadPlacements ());
 	}
 
+	private bool NoBadPlacements()
+	{
+		bool placementOk = true;
+		RaycastHit hitInfo;
+		Vector3 rayDir = Vector3.up;
+		foreach (GameObject r in Runes) {
+			Debug.DrawRay(r.transform.position, rayDir, Color.green, 1f);
+			if (Physics.Raycast(r.transform.position, rayDir, out hitInfo, 10f))
+			{
+				//check the object we hit 
+				GameObject maybeARitualObject = hitInfo.collider.gameObject;
+				Debug.Log ("Bad placement hit: " + maybeARitualObject.name);
+				//is it our buddy?
+				//black case
+				if (ActualSolution.BlackPair.ContainsKey(r))
+				{
+					GameObject thePairedRitualObject;
+					ActualSolution.BlackPair.TryGetValue(r, out thePairedRitualObject);
+					if (!thePairedRitualObject.Equals(maybeARitualObject)) {
+						return false;
+					}
+				}
+				if (ActualSolution.GreenPair.ContainsKey(r))
+				{
+					GameObject thePairedRitualObject;
+					ActualSolution.GreenPair.TryGetValue(r, out thePairedRitualObject);
+					if (!thePairedRitualObject.Equals(maybeARitualObject)) {
+						return false;
+					}
+				}
+				if (ActualSolution.RedPair.ContainsKey(r))
+				{
+					GameObject thePairedRitualObject;
+					ActualSolution.RedPair.TryGetValue(r, out thePairedRitualObject);
+					if (!thePairedRitualObject.Equals(maybeARitualObject)) {
+						return false;
+					}
+				}
+
+				// yes, ok!!!
+				// no, you die!!!
+			}
+		}
+		return placementOk;
+	}
 	void RestartLevel()
 	{
+		// todo
+		// display win or lose msg
+		// fade to play, reload in 3 seconds
 		Application.LoadLevel ("main");
+	}
+
+	private float DistanceBetween(Dictionary<GameObject, GameObject> aPair)
+	{
+		var keys = aPair.Keys;
+		foreach (GameObject k in keys) {
+			GameObject v;
+			aPair.TryGetValue(k, out v);
+			return Vector3.Distance(k.transform.position, v.transform.position);
+		}
+		throw new UnityException ("No keys in dictionary to compute distance");
 	}
 }
 
@@ -102,4 +161,6 @@ public class PuzzleSolution
 	public Dictionary<GameObject, GameObject> RedPair;
 	public Dictionary<GameObject, GameObject> GreenPair;
 	public Dictionary<GameObject, GameObject> BlackPair;
+
+	
 }
