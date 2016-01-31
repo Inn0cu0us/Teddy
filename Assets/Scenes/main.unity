@@ -687,7 +687,7 @@ MonoBehaviour:
   Runes: []
   RitualObjects: []
   MoonPhase: 0
-  CloseEnough: .200000003
+  CloseEnough: 1
   RedCandle: {fileID: 1093678946}
   GreenCandle: {fileID: 1359969715}
   BlackCandle: {fileID: 1780096845}

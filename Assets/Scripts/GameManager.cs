@@ -62,6 +62,12 @@ public class GameManager : MonoBehaviour {
 			RedRitualObject = go;
 			break;
 		}
+		GameObject RedGlyph = null;
+		ActualSolution.RedPair.TryGetValue (RedRitualObject, out RedGlyph);
+		ParticleSystem[] redParticles = RedGlyph.GetComponentsInChildren<ParticleSystem> ();
+		foreach (ParticleSystem p in redParticles) {
+			p.Play();
+		}
 		Imposter RedImposter = RedRitualObject.GetComponent<Imposter> ();
 		RedCandle.RevealedObject = RedImposter;
 
@@ -71,6 +77,13 @@ public class GameManager : MonoBehaviour {
 			GreenRitualObject = go;
 			break;
 		}
+		GameObject GreenGlyph = null;
+		ActualSolution.GreenPair.TryGetValue (GreenRitualObject, out GreenGlyph);
+		ParticleSystem[] greenParticles = GreenGlyph.GetComponentsInChildren<ParticleSystem> ();
+		foreach (ParticleSystem p in greenParticles) {
+			p.startColor = Color.green;
+			p.Play();
+		}
 		Imposter GreenImposter = GreenRitualObject.GetComponent<Imposter> ();
 		GreenCandle.RevealedObject = GreenImposter;
 
@@ -79,6 +92,13 @@ public class GameManager : MonoBehaviour {
 		foreach (GameObject go in keys) {
 			BlackRitualObject = go;
 			break;
+		}
+		GameObject BlackGlyph = null;
+		ActualSolution.BlackPair.TryGetValue (BlackRitualObject, out BlackGlyph);
+		ParticleSystem[] blackParticles = BlackGlyph.GetComponentsInChildren<ParticleSystem> ();
+		foreach (ParticleSystem p in blackParticles) {
+			p.startColor = Color.black;
+			p.Play();
 		}
 		Imposter BlackImposter = BlackRitualObject.GetComponent<Imposter> ();
 		BlackCandle.RevealedObject = BlackImposter;
