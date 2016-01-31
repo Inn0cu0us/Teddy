@@ -56,6 +56,9 @@ public class Audio : MonoBehaviour {
 		SelectedBackgroundMusic.volume = volumes [0];
 		SelectedBackgroundMusic.Play ();
 		SelectedBackgroundMusic.loop = true;
+
+		SelectedBackgroundNoise.volume = volumes [1];
+		SelectedSoundEffect.volume = volumes [2];
 	
 	}
 	

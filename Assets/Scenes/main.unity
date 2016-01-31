@@ -736,6 +736,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2342740, guid: 247ed89dad84f5e44ad7d3d121750aa9, type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 58435909c7915cd41b80a3c2080ce2cb, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 247ed89dad84f5e44ad7d3d121750aa9, type: 2}
   m_IsPrefabParent: 0
@@ -753,7 +757,7 @@ GameObject:
   - 82: {fileID: 1959136199}
   m_Layer: 0
   m_Name: SoundPlayer
-  m_TagString: Untagged
+  m_TagString: SoundPlayer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -794,9 +798,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: bd6084bc89275014aa508d3786f5db84, type: 3}
   - {fileID: 8300000, guid: 3759f3423e37a2a498596c38385ad519, type: 3}
   volumes:
-  - .5
-  - .5
-  - .5
+  - .00999999978
+  - 1
+  - 1
+  SelectedSoundEffect: {fileID: 0}
   effectCase: 0
 --- !u!82 &1959136199
 AudioSource:
