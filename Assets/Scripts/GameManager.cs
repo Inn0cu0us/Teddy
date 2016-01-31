@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour {
 	public float CloseEnough; //the ritual object must be at least this close to its rune position
 
 	public Candle RedCandle;
+	public Candle GreenCandle;
+	public Candle BlackCandle;
 	public Dictionary<int, PuzzleSolution> PuzzleSolutions;
 	public PuzzleSolution ActualSolution;
 	private bool isVictory = false;
@@ -62,6 +64,24 @@ public class GameManager : MonoBehaviour {
 		}
 		Imposter RedImposter = RedRitualObject.GetComponent<Imposter> ();
 		RedCandle.RevealedObject = RedImposter;
+
+		GameObject GreenRitualObject = null; 
+		keys = ActualSolution.GreenPair.Keys;
+		foreach (GameObject go in keys) {
+			GreenRitualObject = go;
+			break;
+		}
+		Imposter GreenImposter = GreenRitualObject.GetComponent<Imposter> ();
+		GreenCandle.RevealedObject = GreenImposter;
+
+		GameObject BlackRitualObject = null; 
+		keys = ActualSolution.BlackPair.Keys;
+		foreach (GameObject go in keys) {
+			BlackRitualObject = go;
+			break;
+		}
+		Imposter BlackImposter = BlackRitualObject.GetComponent<Imposter> ();
+		BlackCandle.RevealedObject = BlackImposter;
 	}
 
 	private void CreatePair(Dictionary<GameObject, GameObject> RuneRitualObjPair,List<GameObject> RitualObjectList, List<GameObject> RuneList)
