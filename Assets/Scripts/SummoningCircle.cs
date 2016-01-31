@@ -4,28 +4,12 @@ using System.Collections;
 public class SummoningCircle : MonoBehaviour {
 
 	public float Radius;
-	public float NumSegments;
+	public int NumSegments;
 	public GameObject RunePrefab;
 
-
-	// Use this for initialization
-	void Start () {
-		PlaceRunes ();
-		PlaceCastingZone ();
-	}
-
-	void PlaceCastingZone()
+	public GameObject[] PlaceRunes()
 	{
-
-	}
-
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
-	void PlaceRunes()
-	{
+		GameObject[] Runes = new GameObject[NumSegments];
 		//defining initial values 
 		float segAngle = 2f * Mathf.PI / NumSegments;
 		float x = 0f;
@@ -36,11 +20,19 @@ public class SummoningCircle : MonoBehaviour {
 			x = x + Mathf.Cos(theta);
 			z = z + Mathf.Sin (theta);
 			Vector3 runePoint = new Vector3 ( x*Radius - Radius, 0f, z*Radius - Radius);
-
-
+			
+			
 			var newRune = GameObject.Instantiate(RunePrefab);
 			newRune.gameObject.transform.position = runePoint + gameObject.transform.position;
-
+			Runes[i] = newRune;
 		}
+		return Runes;
 	}
+
+	// Update is called once per frame
+	void Update () {
+	
+	}
+
+
 }

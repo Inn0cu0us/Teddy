@@ -6,6 +6,7 @@ TagManager:
   tags:
   - GlobalLight
   - Pushable
+  - SummoningCircle
   layers:
   - Default
   - TransparentFX
