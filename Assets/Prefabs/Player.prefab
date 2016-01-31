@@ -30,6 +30,7 @@ GameObject:
   - 114: {fileID: 11491092}
   - 54: {fileID: 5442030}
   - 65: {fileID: 6578394}
+  - 95: {fileID: 9541798}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -180,10 +181,12 @@ Camera:
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
+  m_TargetEye: 3
   m_HDR: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: .0219999999
+  m_StereoMirrorMode: 0
 --- !u!23 &2390488
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -287,6 +290,23 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 123684}
   m_Enabled: 1
+--- !u!95 &9541798
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 153198}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0d3544cc3d903df4dace21e1e40bb529, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11491092
 MonoBehaviour:
   m_ObjectHideFlags: 1
