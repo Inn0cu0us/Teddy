@@ -622,7 +622,7 @@ GameObject:
   - 114: {fileID: 1218919534}
   m_Layer: 0
   m_Name: SummoningCircle
-  m_TagString: Untagged
+  m_TagString: SummoningCircle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -652,7 +652,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Radius: 10
-  NumSegments: 8
+  NumSegments: 0
   RunePrefab: {fileID: 107786, guid: 6b5fd9ec11f74f24a8dd7abad56092a1, type: 2}
 --- !u!1 &1274264475
 GameObject:
@@ -752,6 +752,8 @@ MonoBehaviour:
   GreenRune: {fileID: 0}
   BlackObject: {fileID: 0}
   BlackRune: {fileID: 0}
+  Runes: []
+  RitualObjects: []
 --- !u!1 &1758587028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1058,7 +1060,7 @@ Prefab:
     - target: {fileID: 11443046, guid: 247ed89dad84f5e44ad7d3d121750aa9, type: 2}
       propertyPath: RitualPrefabs.Array.data[3]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 135310, guid: 87e7ed8f3140d8048b13c039faa6ff0d, type: 2}
     - target: {fileID: 11443046, guid: 247ed89dad84f5e44ad7d3d121750aa9, type: 2}
       propertyPath: RitualPrefabs.Array.data[4]
       value: 

@@ -6,26 +6,46 @@ public class LvLBuilder : MonoBehaviour {
 
 	public GameObject[] ClutterPrefabs;
 	public GameObject[] RitualPrefabs;
-	public GameObject[] GameItems;// = new GameObject[];
 	public List<GameObject> Spawnpoints;
 	public GameObject[] RitualObjects;
 
+	private GameObject[] GameItems;// = new GameObject[];
+	private GameManager theManager;
+	private SummoningCircle theCircle;
+	private GameObject[] Runes;
+
+	void Awake()
+	{
+		theManager = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameManager> ();
+		theCircle = GameObject.FindGameObjectWithTag ("SummoningCircle").GetComponent<SummoningCircle> ();
+	}
+
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
+		Runes = theCircle.PlaceRunes ();
+		PlaceCastingZone ();
 		int ran = Random.Range (6, 26);
 		GameItems = new GameObject[ran];
 		RitualObjects = new GameObject[RitualPrefabs.Length];
 		Spawnpoints = new List<GameObject> (40);
-		ChooseObjects ();
-
+		PlaceObjects ();
+		InitManager ();
 	}
-	
+
+	void InitManager()
+	{
+		theManager.Runes = Runes;
+		theManager.RitualObjects = RitualObjects;
+	}
+
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+	{
 	
 	}
 
-	void ChooseObjects() {
+	void PlaceObjects() {
 		//Build list of spawn points
 		Tile[] tiles = GetComponentsInChildren<Tile> ();
 		foreach (Tile t in tiles) 
@@ -58,24 +78,15 @@ public class LvLBuilder : MonoBehaviour {
 
 		// Place the instance at the spawnpoint
 	    // Update the puzzle solution 
-
-			/*switch (i){
-			case 0:
-
-				break;
-			case 1:
-
-				break;
-			case 2:
-
-				break;
-			default:
-
-				break;
-			}*/
-
+		
 
 		}
-
 	}
+
+	void PlaceCastingZone()
+	{
+		
+	}
+
+
 }
