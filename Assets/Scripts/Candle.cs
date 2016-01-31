@@ -11,6 +11,7 @@ public class Candle : Usable {
 
 	private float OriginalIntensity;
 	private Light Flame;
+	private ParticleSystem CandleParticles;
     private bool isLit = false;
     private float timer = 0f;
 	private float flickerTimer = 0f;
@@ -18,15 +19,19 @@ public class Candle : Usable {
 	private Light GlobalLight;
 	private Color GlobalLightStartingColor;
 
+	void Awake ()
+	{
+		CandleParticles = GetComponentInChildren<ParticleSystem> ();
+		Flame = GetComponentInChildren<Light> ();
+		var go = GameObject.FindGameObjectWithTag ("GlobalLight");
+		GlobalLight = go.GetComponent<Light> ();
+	}
+
 	void Start () 
 	{
-
-		Flame = GetComponentInChildren<Light> ();
         Flame.color = CandleColor;
 		OriginalIntensity = Flame.intensity;
 		Flame.intensity = 0f;
-		var go = GameObject.FindGameObjectWithTag ("GlobalLight");
-		GlobalLight = go.GetComponent<Light> ();
 		GlobalLightStartingColor = GlobalLight.color;
     }
 	
@@ -56,6 +61,7 @@ public class Candle : Usable {
     {
 		Debug.Log ("Candle on");
 		Light ();
+		CandleParticles.Play ();
         isLit = true;
     }
 
@@ -70,6 +76,7 @@ public class Candle : Usable {
 		//play candle off sshhhh
 		RevealedObject.ConcealIdentity ();
 		Debug.Log("Candle extinguished");
+		CandleParticles.Stop ();
 		GlobalLight.color = GlobalLightStartingColor;
 		Flame.intensity = 0f;
 	}
