@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using UnityEngine.UI;
 public class PlayerControls : MonoBehaviour {
 
 	Vector3 Movement;
@@ -12,12 +12,24 @@ public class PlayerControls : MonoBehaviour {
     private Rigidbody objectPushed;
     Vector3 lastMovement;
     Animator anim;
-    
+	public Text EndgameText;
+	public Text EndgameFlavour;
+	private string winString = "Ritual successful!";
+	private string winFlavour = "Oh brave soul, stumbling ever on-wards. The ritual completed, oblivion's tender embrace thwarted for yet another night. And yet, to what avail? Annihilation can never be evaded long.";
+	private string loseString = "Ritual failed!";
+	private string loseFlavour = "Sweet, terrible sorrow. Despair's crushing embrace welcomes you with rending ferocity. Wagering a soul to eldritch ritual is a fools bet.";
+
+
+	public float SecondsBeforeRestart;
+	private bool restartLevel = false;
+	private float restartTimer = 0f;
+
 	public float Speed;
 
 	private Audio Sound;
 
 	void Awake (){
+
 		myBody = GetComponent<Rigidbody> ();
 		var go = GameObject.FindGameObjectWithTag ("GameController");
 		theManager = go.GetComponent<GameManager> ();
@@ -30,7 +42,8 @@ public class PlayerControls : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-	
+		EndgameText.enabled = false;
+		EndgameFlavour.enabled = false;
 	}
 
 	// Update is called once per frame
@@ -60,6 +73,18 @@ public class PlayerControls : MonoBehaviour {
 			Debug.Log ("Pressed Use");
 			TryUse ();
 		}
+	}
+
+	void Update()
+	{
+		if (restartLevel) {
+			restartTimer += Time.deltaTime;
+			if (restartTimer >= SecondsBeforeRestart)
+			{
+				Application.LoadLevel("main");
+			}
+		}
+
 	}
 
 	void TryUse()
@@ -97,26 +122,36 @@ public class PlayerControls : MonoBehaviour {
 
 	void ReadInput()
 	{
-		float xMovement = Input.GetAxis("Horizontal") * Speed * Time.deltaTime;
-		float zMovement = Input.GetAxis ("Vertical") * Speed * Time.deltaTime;
-		Movement = new Vector3 (xMovement, 0f, zMovement);
-        if(xMovement != 0 || zMovement != 0)
-        {
-            lastMovement = Movement;
-        }
-		pushPressed = Input.GetButtonDown ("Push");
-        pushReleased = Input.GetButtonUp("Push");
-		IsUsing = Input.GetButtonDown ("Use");
-	//	if (Input.GetButton (
+		if (!restartLevel) {
+			float xMovement = Input.GetAxis ("Horizontal") * Speed * Time.deltaTime;
+			float zMovement = Input.GetAxis ("Vertical") * Speed * Time.deltaTime;
+			Movement = new Vector3 (xMovement, 0f, zMovement);
+			if (xMovement != 0 || zMovement != 0) {
+				lastMovement = Movement;
+			}
+			pushPressed = Input.GetButtonDown ("Push");
+			pushReleased = Input.GetButtonUp ("Push");
+			IsUsing = Input.GetButtonDown ("Use");
+		}
+		if (Input.GetButton ("Quit"))
+		{
+			Application.Quit();
+		}
+	
 	}
 
 	public void SubmitPuzzleSolution()
 	{
+		EndgameText.enabled = true;
+		EndgameFlavour.enabled = true;
 		if (theManager.CheckPuzzle ()) {
-			Debug.Log ("You win!!!");//win
+			EndgameText.text = winString;
+			EndgameFlavour.text = winFlavour;
 		} else {
-			Debug.Log ("You die!");
+			EndgameText.text = loseString;
+			EndgameFlavour.text = loseFlavour;
 		}
+		restartLevel = true;
 	}
 
     void Animating(float h, float v)
