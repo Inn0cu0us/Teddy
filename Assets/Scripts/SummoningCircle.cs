@@ -7,6 +7,7 @@ public class SummoningCircle : MonoBehaviour {
 	public float NumSegments;
 	public GameObject RunePrefab;
 
+
 	// Use this for initialization
 	void Start () {
 		PlaceRunes ();
