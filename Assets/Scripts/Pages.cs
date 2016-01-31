@@ -4,10 +4,10 @@ using UnityEngine.UI;
 
 public class Pages : MonoBehaviour {
 
-	private Image page;
+	private Image[] pages;
 
 	void Awake (){
-		page = GetComponentInChildren<Image> ();
+		pages = GetComponentsInChildren<Image> ();
 	}
 
 	// Use this for initialization
@@ -18,11 +18,15 @@ public class Pages : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
-
-		if (Input.GetButton("ViewPages")) {
-			page.color = Color.white; //show
-		} else 
-			page.color = Color.clear; //hide
+			if (Input.GetButton("ViewPages")) {
+			foreach( Image joint in pages ){
+				joint.color = Color.white; //show
+			}
+			} else {
+			foreach( Image joint in pages ){
+				joint.color = Color.clear; //hide
+			}
+		}
 	}
 
 	void FlipPage () {
