@@ -971,6 +971,7 @@ Prefab:
     - target: {fileID: 11443046, guid: 247ed89dad84f5e44ad7d3d121750aa9, type: 2}
       propertyPath: Prefabs.Array.data[0]
       value: 
+<<<<<<< HEAD
       objectReference: {fileID: 126072, guid: 87e7ed8f3140d8048b13c039faa6ff0d, type: 2}
     - target: {fileID: 11443046, guid: 247ed89dad84f5e44ad7d3d121750aa9, type: 2}
       propertyPath: RitualPrefabs.Array.data[0]
@@ -996,6 +997,9 @@ Prefab:
       propertyPath: ClutterPrefabs.Array.data[0]
       value: 
       objectReference: {fileID: 175998, guid: 5d3495ed7f17ac44a98109eecda5793a, type: 2}
+=======
+      objectReference: {fileID: 142894, guid: 87e7ed8f3140d8048b13c039faa6ff0d, type: 2}
+>>>>>>> e393b7cffe0023bbd3a78ff2b33ae65634a78129
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 247ed89dad84f5e44ad7d3d121750aa9, type: 2}
   m_IsPrefabParent: 0
