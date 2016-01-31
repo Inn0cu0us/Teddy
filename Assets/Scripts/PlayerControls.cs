@@ -100,7 +100,8 @@ public class PlayerControls : MonoBehaviour {
 	public void SubmitPuzzleSolution()
 	{
 		if (theManager.CheckPuzzle ()) {
-			//win
+
+			Debug.Log ("You win!!!");//win
 		} else {
 			//you die
 		}
