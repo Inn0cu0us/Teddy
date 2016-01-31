@@ -1,9 +1,34 @@
 fileFormatVersion: 2
 guid: 629ad6a33be1a05419a3fbebf330d9e9
-timeCreated: 1454134109
+timeCreated: 1454197036
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: flickering match_7
+    21300002: flickering match_8
+    21300004: flickering match_9
+    21300006: flickering match_10
+    21300008: flickering match_11
+    21300010: flickering match_12
+    21300012: flickering match_13
+    21300014: flickering match_21
+    21300016: flickering match_22
+    21300018: flickering match_23
+    21300020: flickering match_24
+    21300022: flickering match_25
+    21300024: flickering match_26
+    21300026: flickering match_27
+    21300028: flickering match_35
+    21300030: flickering match_36
+    21300032: flickering match_37
+    21300034: flickering match_38
+    21300036: flickering match_39
+    21300038: flickering match_40
+    21300040: flickering match_41
+    21300042: flickering match_45
+    21300044: flickering match_46
+    21300046: flickering match_47
+    21300048: flickering match_48
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -17,7 +42,7 @@ TextureImporter:
   bumpmap:
     convertToNormalMap: 0
     externalNormalMap: 0
-    heightScale: 0.25
+    heightScale: .25
     normalMapFilter: 0
   isReadable: 0
   grayScaleToAlpha: 0
@@ -30,27 +55,275 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 16
     mipBias: -1
-    wrapMode: -1
-  nPOTScale: 1
+    wrapMode: 1
+  nPOTScale: 0
   lightmap: 0
   rGBM: 0
   compressionQuality: 50
-  allowsAlphaSplitting: 0
-  spriteMode: 0
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
-  spritePivot: {x: 0.5, y: 0.5}
+  spritePivot: {x: .5, y: .5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
-  alphaIsTransparency: 0
-  textureType: -1
+  alphaIsTransparency: 1
+  textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
-    outline: []
+    sprites:
+    - name: flickering match_7
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 814
+        width: 114
+        height: 209
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: flickering match_8
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 805
+        width: 119
+        height: 217
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: flickering match_9
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 798
+        width: 124
+        height: 222
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: flickering match_10
+      rect:
+        serializedVersion: 2
+        x: 362
+        y: 790
+        width: 129
+        height: 234
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: flickering match_11
+      rect:
+        serializedVersion: 2
+        x: 491
+        y: 784
+        width: 131
+        height: 238
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: flickering match_12
+      rect:
+        serializedVersion: 2
+        x: 623
+        y: 779
+        width: 133
+        height: 245
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: flickering match_13
+      rect:
+        serializedVersion: 2
+        x: 757
+        y: 773
+        width: 139
+        height: 251
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: flickering match_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 517
+        width: 137
+        height: 260
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: flickering match_22
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 513
+        width: 140
+        height: 263
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: flickering match_23
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 510
+        width: 141
+        height: 268
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: flickering match_24
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 508
+        width: 138
+        height: 266
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: flickering match_25
+      rect:
+        serializedVersion: 2
+        x: 557
+        y: 507
+        width: 140
+        height: 266
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: flickering match_26
+      rect:
+        serializedVersion: 2
+        x: 697
+        y: 508
+        width: 138
+        height: 264
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: flickering match_27
+      rect:
+        serializedVersion: 2
+        x: 837
+        y: 508
+        width: 138
+        height: 266
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: flickering match_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 244
+        width: 136
+        height: 261
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: flickering match_36
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 247
+        width: 135
+        height: 261
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: flickering match_37
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 251
+        width: 134
+        height: 259
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: flickering match_38
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 255
+        width: 131
+        height: 252
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: flickering match_39
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 261
+        width: 131
+        height: 244
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: flickering match_40
+      rect:
+        serializedVersion: 2
+        x: 677
+        y: 269
+        width: 126
+        height: 236
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: flickering match_41
+      rect:
+        serializedVersion: 2
+        x: 808
+        y: 278
+        width: 129
+        height: 228
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: flickering match_45
+      rect:
+        serializedVersion: 2
+        x: 395
+        y: 24
+        width: 161
+        height: 219
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: flickering match_46
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 25
+        width: 129
+        height: 219
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: flickering match_47
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 35
+        width: 130
+        height: 207
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: flickering match_48
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 47
+        width: 130
+        height: 198
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
   assetBundleName: 
