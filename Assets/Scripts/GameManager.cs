@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour {
 	private int WinStreak = 0;
 	private Dictionary<GameObject, GameObject> PuzzleSolution;
 
+	private Audio Sound;
+
 	void Start () 
 	{
 		

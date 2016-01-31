@@ -10,6 +10,8 @@ TagManager:
   - BackgroundMusic
   - BackgroundNoise
   - SoundEffects
+  - Candle
+  - SoundPlayer
   layers:
   - Default
   - TransparentFX
