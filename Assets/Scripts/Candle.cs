@@ -18,6 +18,7 @@ public class Candle : Usable {
 
 	private Light GlobalLight;
 	private Color GlobalLightStartingColor;
+	private Candle[] allCandles;
 
 	void Awake ()
 	{
@@ -25,6 +26,16 @@ public class Candle : Usable {
 		Flame = GetComponentInChildren<Light> ();
 		var go = GameObject.FindGameObjectWithTag ("GlobalLight");
 		GlobalLight = go.GetComponent<Light> ();
+		InitAllCandles ();
+	}
+
+	private void InitAllCandles()
+	{
+		GameObject[] allCandlesGo = GameObject.FindGameObjectsWithTag ("Candle");
+		allCandles = new Candle[allCandlesGo.Length];
+		for (int i=0; i<=allCandles.Length-1; i++) {
+			allCandles[i] = allCandlesGo[i].GetComponent<Candle>();
+		}
 	}
 
 	void Start () 
@@ -59,6 +70,7 @@ public class Candle : Usable {
 
     public override void PerformUseAction()
     {
+		ExtinguishAllCandles ();
 		Debug.Log ("Candle on");
 		Light ();
 		CandleParticles.Play ();
@@ -79,5 +91,13 @@ public class Candle : Usable {
 		CandleParticles.Stop ();
 		GlobalLight.color = GlobalLightStartingColor;
 		Flame.intensity = 0f;
+		isLit = false;
+	}
+
+	private void ExtinguishAllCandles()
+	{
+		foreach (Candle c in allCandles) {
+			c.Extinguish ();
+		}
 	}
 }
