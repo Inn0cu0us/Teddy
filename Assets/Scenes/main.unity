@@ -568,7 +568,7 @@ Transform:
   m_Children:
   - {fileID: 1274264476}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
 --- !u!114 &1218919534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -790,7 +790,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 436006, guid: 247ed89dad84f5e44ad7d3d121750aa9, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 488224, guid: 247ed89dad84f5e44ad7d3d121750aa9, type: 2}
       propertyPath: m_LocalPosition.y
@@ -987,7 +987,7 @@ Prefab:
     - target: {fileID: 11443046, guid: 247ed89dad84f5e44ad7d3d121750aa9, type: 2}
       propertyPath: RitualPrefabs.Array.data[3]
       value: 
-      objectReference: {fileID: 145062, guid: 87e7ed8f3140d8048b13c039faa6ff0d, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 11443046, guid: 247ed89dad84f5e44ad7d3d121750aa9, type: 2}
       propertyPath: RitualPrefabs.Array.data[4]
       value: 
@@ -996,7 +996,6 @@ Prefab:
       propertyPath: ClutterPrefabs.Array.data[0]
       value: 
       objectReference: {fileID: 175998, guid: 5d3495ed7f17ac44a98109eecda5793a, type: 2}
-      objectReference: {fileID: 142894, guid: 87e7ed8f3140d8048b13c039faa6ff0d, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 247ed89dad84f5e44ad7d3d121750aa9, type: 2}
   m_IsPrefabParent: 0

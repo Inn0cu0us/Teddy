@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour {
 
 	void Start () {
 		//Generate Puzzle
+		// Assign one object to be red object
+		// Assign one rune to be the red rune
 	}
 	
 	// Update is called once per frame
