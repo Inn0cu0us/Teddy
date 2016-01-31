@@ -52,7 +52,7 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &191648
 GameObject:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -61,7 +61,7 @@ GameObject:
   - 198: {fileID: 19891300}
   - 199: {fileID: 19977344}
   m_Layer: 0
-  m_Name: ParticleRuneActive 1
+  m_Name: ParticleRuneDefault
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,24 +74,23 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 184262}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: -1.62920685e-07}
-  m_LocalPosition: {x: 0, y: 0, z: -.340000004}
+  m_LocalPosition: {x: 0, y: -.100000001, z: -.230000004}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 458406}
+  m_Children: []
   m_Father: {fileID: 478442}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!4 &458406
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 191648}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 7.10542736e-15, y: 1, z: 0, w: -1.62920685e-07}
+  m_LocalPosition: {x: 0, y: -.100000165, z: -.229999989}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 445494}
-  m_RootOrder: 0
+  m_Father: {fileID: 478442}
+  m_RootOrder: 1
 --- !u!4 &471058
 Transform:
   m_ObjectHideFlags: 1
@@ -111,10 +110,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 107786}
   m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106709}
-  m_LocalPosition: {x: -19.6499996, y: 1.04999995, z: -.790000021}
+  m_LocalPosition: {x: -17.0512466, y: .8143906, z: -7.88526535}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 471058}
+  - {fileID: 458406}
   - {fileID: 445494}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -1186,7 +1186,7 @@ ParticleSystem:
   randomSeed: 0
   looping: 1
   prewarm: 0
-  playOnAwake: 0
+  playOnAwake: 1
   moveWithTransform: 0
   InitialModule:
     enabled: 1
@@ -1412,7 +1412,7 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 2
     enabled: 1
-    type: 10
+    type: 11
     radius: 2.3900001
     angle: 25.5
     length: 5
@@ -1427,7 +1427,7 @@ ParticleSystem:
     enabled: 1
     m_Type: 0
     rate:
-      scalar: 50
+      scalar: 100
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1544,7 +1544,7 @@ ParticleSystem:
       maxGradient:
         key0:
           serializedVersion: 2
-          rgba: 4282269246
+          rgba: 4280032284
         key1:
           serializedVersion: 2
           rgba: 0
