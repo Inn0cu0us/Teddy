@@ -12,14 +12,15 @@ public class PlayerControls : MonoBehaviour {
 	private GameManager theManager;
     private Rigidbody objectPushed;
     Vector3 lastMovement;
-
-
+    Animator anim;
+    
 	public float Speed;
 
 	void Awake (){
 		myBody = GetComponent<Rigidbody> ();
 		var go = GameObject.FindGameObjectWithTag ("GameController");
 		theManager = go.GetComponent<GameManager> ();
+        anim = GetComponent<Animator>();
 	}
 
 	// Use this for initialization
@@ -29,14 +30,16 @@ public class PlayerControls : MonoBehaviour {
 	}
 
 	// Update is called once per frame
-	void Update () 
+	void FixedUpdate () 
 	{
 		ReadInput ();
 		myBody.velocity = Movement;
+        Animating(Movement.x, Movement.z);
         if(objectPushed != null)
         {
             objectPushed.velocity = Movement;
         }
+
 
 		if (pushPressed)
         {
@@ -106,5 +109,41 @@ public class PlayerControls : MonoBehaviour {
 			//you die
 		}
 	}
+
+    void Animating(float h, float v)
+    {
+        if (!(h == 0 && v == 0))
+        {
+            if (Mathf.Abs(h) > Mathf.Abs(v))
+            {
+                //horizontal
+                if (h > 0)
+                {
+                    Debug.Log("MovingRight!");
+
+                    anim.SetTrigger("MovingRight");
+                }
+                else
+                {
+                    Debug.Log("MovingLeft!");
+                    anim.SetTrigger("MovingLeft");
+                }
+            }
+            else
+            {
+                //vertical
+                if (v > 0)
+                {
+                    Debug.Log("MovingUp!");
+                    anim.SetTrigger("MovingUp");
+                }
+                else
+                {
+                    Debug.Log("MovingDown!");
+                    anim.SetTrigger("MovingDown");
+                }
+            }
+        }
+    }
 	 
 }
