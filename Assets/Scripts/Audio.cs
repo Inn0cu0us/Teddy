@@ -2,16 +2,36 @@
 using System.Collections;
 
 public class Audio : MonoBehaviour {
+	
+	/// For Source array and volume array:
+	///  0 = Background Music
+	///  1 = Background Noises
+	///  2 = SoundEffects
+
 
 	public AudioClip BackgroundMusic;
 	public AudioClip[] BackgroundNoises;
+	
+	/// Noises List
+	/// 0 = Creaking House
+	/// 1 = ticking
+	/// 2 = Water Drip
+
 	public AudioClip[] Effects;
+	
+	/// Effects List
+	/// 0 = Deamon Laugh
+	/// 1 = Happy Teddy
+	/// 2 = Match Lighting
+	/// 3 = Mistake was Made / Messed up
+	/// 4 = Object Move
+	/// 5 = Candle Flame
 
 	public float[] volumes;
 
 	private AudioSource[] AudioComponents;
 
-	private AudioSource SelectedSoundEffect;
+	public AudioSource SelectedSoundEffect;
 	private AudioSource SelectedBackgroundNoise;
 	private AudioSource SelectedBackgroundMusic;
 
@@ -33,6 +53,7 @@ public class Audio : MonoBehaviour {
 	void Start () {
 	
 		SelectedBackgroundMusic.clip = BackgroundMusic;
+		SelectedBackgroundMusic.volume = volumes [0];
 		SelectedBackgroundMusic.Play ();
 		SelectedBackgroundMusic.loop = true;
 	
@@ -45,14 +66,22 @@ public class Audio : MonoBehaviour {
 			PlaySoundEffect ();
 		}
 		if (!SelectedBackgroundNoise.isPlaying) {
+			SelectBackgroundNoises();
 			PlayBackgroundNoises();
 		}
 	}
 
 	//Play Seleced sound
-	private void PlaySoundEffect()
+	public void PlaySoundEffect()
 	{
-		SelectedSoundEffect.Play ();
+		SelectedSoundEffect.volume = volumes [2];
+		if (!SelectedSoundEffect.isPlaying)
+			SelectedSoundEffect.Play ();
+	}
+	public void StopSoundEffect()
+	{
+		SelectedSoundEffect.Stop ();
+		SelectedSoundEffect.clip = null;
 	}
 
 	public void ChangeSoundEffectPlaying(){

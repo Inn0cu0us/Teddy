@@ -15,11 +15,16 @@ public class PlayerControls : MonoBehaviour {
     
 	public float Speed;
 
+	private Audio Sound;
+
 	void Awake (){
 		myBody = GetComponent<Rigidbody> ();
 		var go = GameObject.FindGameObjectWithTag ("GameController");
 		theManager = go.GetComponent<GameManager> ();
         anim = GetComponent<Animator>();
+
+		var so = GameObject.FindGameObjectWithTag ("SoundPlayer");
+		Sound = so.GetComponent<Audio> ();
 	}
 
 	// Use this for initialization
@@ -37,6 +42,7 @@ public class PlayerControls : MonoBehaviour {
         if(objectPushed != null)
         {
             objectPushed.velocity = Movement;
+			Sound.effectCase = 4;
         }
 
 
@@ -47,6 +53,7 @@ public class PlayerControls : MonoBehaviour {
         else if (pushReleased)
         {
             objectPushed = null;
+			Sound.StopSoundEffect ();
         }
 
 		if (IsUsing) {
@@ -79,7 +86,11 @@ public class PlayerControls : MonoBehaviour {
             Debug.Log("Hit " + hitInfo.collider.gameObject);
             if(hitInfo.collider.gameObject.tag.Equals("Pushable")) 
             {
-                objectPushed = hitInfo.collider.gameObject.GetComponent<Rigidbody>();  
+                objectPushed = hitInfo.collider.gameObject.GetComponent<Rigidbody>();
+
+				Sound.effectCase = 5;
+				Sound.ChangeSoundEffectPlaying();
+				Sound.PlaySoundEffect ();
             }
         }
     }

@@ -20,6 +20,8 @@ public class Candle : Usable {
 	private Color GlobalLightStartingColor;
 	private Candle[] allCandles;
 
+	private Audio Sound;
+
 	void Awake ()
 	{
 		CandleParticles = GetComponentInChildren<ParticleSystem> ();
@@ -27,6 +29,9 @@ public class Candle : Usable {
 		var go = GameObject.FindGameObjectWithTag ("GlobalLight");
 		GlobalLight = go.GetComponent<Light> ();
 		InitAllCandles ();
+
+		var so = GameObject.FindGameObjectWithTag ("SoundPlayer");
+		Sound = so.GetComponent<Audio> ();
 	}
 
 	private void InitAllCandles()
@@ -56,6 +61,12 @@ public class Candle : Usable {
 			{
 				flickerTimer = 0f;
 				Flame.intensity = Random.Range(OriginalIntensity - FlickerRange, OriginalIntensity + FlickerRange);
+				Sound.effectCase = 6;
+
+				Sound.ChangeSoundEffectPlaying();
+				Sound.PlaySoundEffect ();
+					
+
 
 			}
             timer += Time.deltaTime;
@@ -92,6 +103,9 @@ public class Candle : Usable {
 		GlobalLight.color = GlobalLightStartingColor;
 		Flame.intensity = 0f;
 		isLit = false;
+		Sound.StopSoundEffect ();
+
+
 	}
 
 	private void ExtinguishAllCandles()
