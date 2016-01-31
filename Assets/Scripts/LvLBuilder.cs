@@ -81,7 +81,7 @@ public class LvLBuilder : MonoBehaviour {
 					mr.material = fake.ImposterImage;
 				}
 			}
-			int SpawnSelect = Random.Range (0,Spawnpoints.Count - 1);
+			int SpawnSelect = Random.Range (0,Spawnpoints.Count);
 			RitualObjects[i].transform.position = Spawnpoints[SpawnSelect].transform.position;
 			Spawnpoints.RemoveAt(SpawnSelect);
 		}
@@ -89,11 +89,11 @@ public class LvLBuilder : MonoBehaviour {
 		for (int i = 0; i < GameItems.Length-1; i++){
 
 		// Select a prefab from the list of prefabs
-			int PrefabSelect = Random.Range(0,ClutterPrefabs.Length - 1);
+			int PrefabSelect = Random.Range(0,ClutterPrefabs.Length);
 			GameItems[i] = GameObject.Instantiate(ClutterPrefabs[PrefabSelect]);
 
 		// Select a spawnpoint from the list of spawnpoints
-			int SpawnSelect = Random.Range (0,Spawnpoints.Count - 1);
+			int SpawnSelect = Random.Range (0,Spawnpoints.Count);
 			GameItems[i].transform.position = Spawnpoints[SpawnSelect].transform.position;
 
 		//remove spawnpoint from list
