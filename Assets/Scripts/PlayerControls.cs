@@ -4,7 +4,6 @@ using System.Collections;
 public class PlayerControls : MonoBehaviour {
 
 	Vector3 Movement;
-	bool IsPushing = false;
     bool pushPressed = false;
     bool pushReleased = false;
 	bool IsUsing = false;
